@@ -37,23 +37,37 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.picopic.ui.theme.Black
 import com.example.picopic.ui.theme.BlueGray
 import com.example.picopic.user_interface.components.InputBox
 import com.example.picopic.view_models.SignUpViewModel
 
 @Composable
 fun Login() {
+    val uiColor:Color = if (isSystemInDarkTheme()) Black else Color.White
+    var colors = listOf<Color>()
+    if (!isSystemInDarkTheme()){
+        colors = listOf(Color(132, 255, 201), Color(170, 178, 255), Color(236, 160, 255))
+    }
+    else{
+        colors = listOf(Color(14, 7, 3), Color(42, 69, 75), Color(41, 72, 97))
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(color = uiColor)
     ){
         Box (
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp)
+                .height(280.dp)
         ) {
             val infiniteTransition = rememberInfiniteTransition(label = "background")
             val targetOffset = with(LocalDensity.current){
@@ -68,7 +82,7 @@ fun Login() {
                 label = "offset"
             )
             val brush = Brush.linearGradient(
-                colors = listOf(Color(132, 255, 201), Color(170, 178, 255), Color(236, 160, 255)),
+                colors = colors,
                 start = Offset(offset, offset),
                 end = Offset(offset + 400f, offset + 400f),
                 tileMode = TileMode.Mirror
@@ -96,6 +110,7 @@ fun Login() {
                 )
             }
         }
+        Spacer(modifier = Modifier.padding(50.dp))
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -122,6 +137,36 @@ fun Login() {
             ) {
                 Text(text = "Log In", style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Medium))
             }
+        }
+        val uiColor:Color = if (isSystemInDarkTheme()) Color.White else Color.Black
+        Box(
+            modifier = Modifier
+                .fillMaxHeight(fraction = 0.2f)
+                .fillMaxWidth(),
+            contentAlignment = Alignment.Center,
+
+            ){
+            Text(text = buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(
+                        color = Color(0xFF94A3B8),
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal
+                    )
+                ){
+                    append("Don't have account?")
+                }
+                withStyle(
+                    style = SpanStyle(
+                        color = uiColor,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                ){
+                    append(" ")
+                    append("Create Now")
+                }
+            })
         }
     }
 
