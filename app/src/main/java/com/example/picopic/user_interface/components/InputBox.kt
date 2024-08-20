@@ -1,4 +1,4 @@
-package com.example.picopic
+package com.example.picopic.user_interface.components
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -10,8 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.picopic.ui.theme.focusedTextFieldText
 import com.example.picopic.ui.theme.textFieldContainer
 import com.example.picopic.ui.theme.unfocusedTextFieldText

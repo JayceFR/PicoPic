@@ -1,4 +1,4 @@
-package com.example.picopic
+package com.example.picopic.models
 
 import java.util.UUID
 

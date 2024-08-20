@@ -1,4 +1,4 @@
-package com.example.picopic
+package com.example.picopic.view_models
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
